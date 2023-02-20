@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 public class HelloController {
+
     @GetMapping("/hello-v1")
     public String helloV1(HttpServletRequest request) {
         String data = request.getParameter("data");
@@ -16,6 +17,7 @@ public class HelloController {
         log.info("intValue:{}", intValue);
         return "ok";
     }
+
     @GetMapping("/hello-v2")
     public String helloV2(@RequestParam Integer data) {
         log.info("data:{}", data);
