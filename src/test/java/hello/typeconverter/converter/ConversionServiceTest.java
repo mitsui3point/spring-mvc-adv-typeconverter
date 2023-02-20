@@ -1,7 +1,6 @@
 package hello.typeconverter.converter;
 
 import hello.typeconverter.type.IpPort;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.ConverterRegistry;
@@ -43,7 +42,7 @@ public class ConversionServiceTest {
     @Test
     void conversionServiceTest() {
         //given
-        DefaultConversionService conversionService = registUserCustomConverter();
+        DefaultConversionService conversionService = registeredUserCustomConverter();
         //when
         Integer actualStringToInteger = conversionService.convert("10", Integer.class);
         String actualIntegerToString = conversionService.convert(10, String.class);
@@ -63,7 +62,7 @@ public class ConversionServiceTest {
         assertThat(actualStringToIpPort).isEqualTo(new IpPort("192.168.0.1", 8080));
     }
 
-    private DefaultConversionService registUserCustomConverter() {
+    private DefaultConversionService registeredUserCustomConverter() {
         DefaultConversionService conversionService = new DefaultConversionService();
         conversionService.addConverter(new StringToIntegerConverter());
         conversionService.addConverter(new IntegerToStringConverter());
