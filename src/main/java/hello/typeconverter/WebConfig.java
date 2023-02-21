@@ -20,6 +20,6 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addConverter(new IpPortToStringConverter());
 
         //포맷터 추가
-        registry.addFormatter(new MyNumberFormatter());
+//        registry.addFormatter(new MyNumberFormatter());
     }
 }
