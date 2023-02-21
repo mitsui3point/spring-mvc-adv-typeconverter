@@ -23,9 +23,12 @@ public class WebConfigTest {
     @Test
     void isConverterRegisteredTest() {
         ConversionService conversionService = context.getBean(ConversionService.class);
-        assertThat(conversionService.canConvert(String.class, Integer.class)).isTrue();
-        assertThat(conversionService.canConvert(Integer.class, String.class)).isTrue();
+//        assertThat(conversionService.canConvert(String.class, Integer.class)).isTrue();
+//        assertThat(conversionService.canConvert(Integer.class, String.class)).isTrue();
         assertThat(conversionService.canConvert(IpPort.class, String.class)).isTrue();
         assertThat(conversionService.canConvert(String.class, IpPort.class)).isTrue();
+
+        assertThat(conversionService.convert("1,000", Number.class)).isEqualTo(1000L);
+        assertThat(conversionService.convert(1000, String.class)).isEqualTo("1,000");
     }
 }
